@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>請假作業</title>
+    <!--<script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>-->
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Bootstrap core JS-->
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+   <!-- Core theme JS-->
+   <script type="text/javascript" src="js/scripts.js"></script>
+    <script>
+		/*function initializeApp(data) {  //初始化LIFF
+			var userid = data.context.userId;  //取得ID
+		}*/
+		/*function initializeApp() {
+			liff
+				.init({
+					liffId: "1657090452-yZxrKlp2" // Use own liffId
+				})
+				.then(() => {
+				　console.log('初始化成功')
+				})
+				.catch((err) => {
+				　console.log('初始化失敗')
+				});
+
+			// Using a callback
+			liff.init({ liffId: "1657090452-yZxrKlp2" }, successCallback, errorCallback);
+		}*/
+		function pushMsg(pname, pleave, pstartdate, penddate, pstarttime, pendtime) {
+			var NowDate=new Date();
+			var NowYear=NowDate.getFullYear();
+			var NowMonth=NowDate.getMonth()+1;
+			var NowDay=NowDate.getDate();
+			var Arystartdate = pstartdate.split('-');
+			var Aryenddate = penddate.split('-');
+			var Arystarttime = pstarttime.split(':');
+			var Aryendtime = pendtime.split(':');
+			var SEyear = Number(Aryenddate[0]) - Number(Arystartdate[0]);	
+			var SEmouth = Number(Aryenddate[1]) - Number(Arystartdate[1]);
+			var SEday = Number(Aryenddate[2]) - Number(Arystartdate[2]);
+			var ConDay = Number(Arystartdate[1]) - NowMonth;
+			if(pleave == '特休' || pleave == '婚假' || pleave == '分娩假' || pleave == '產檢假' || pleave == '喪假(父母、養父母、繼父母、配偶喪亡者)' || pleave == '喪假(祖父母、子女、配偶之父母、配偶之養父母或繼父母喪亡者)' || pleave == '喪假(曾祖父母、兄弟姊妹、配偶之祖父母喪亡者)'){
+				pstarttime='08:00';
+				pendtime='17:00';
+			}
+			if (pname == '' || pstartdate == '' || penddate == '' || pstarttime == '' || pendtime == '') {  //資料檢查
+				alert('每個項目都必須輸入！');
+				return;
+			}
+			if (Arystartdate[0] > Aryenddate[0]){
+				alert('起始年份不能大於結束年份！');
+				return;				
+			}
+			if (SEmouth > 1){
+				alert('月份錯誤,不可小於現在月份安排請假！');
+				return;			
+			}/*else if (Arystartdate[2] > Aryenddate[2]){
+				alert('起始日期不能大於結束日期！');
+				return;					
+			}*/else if (Arystarttime[0] > Aryendtime[0]){
+				alert('起始時間不能大於結束時間！');
+				return;					
+			/*}else if (Arystarttime[1] > Aryendtime[1]){
+				alert('起始時間不能大於結束時間！');
+				return;	*/				
+			}else if (pleave == '生理假' && SEday > 1 || SEmouth > 1){
+				alert('生理假一個月不可請超過一天！');
+				return;			
+			}/*else if(NowYear != Number(Arystartdate[0]) ){
+				alert('年份錯誤,不可跨年安排請假！');
+				return;						
+			}else if(ConDay > 1 ){		
+				alert('月份錯誤,已超出可請月份請重新安排請假！');
+				return;	
+			}*/else{
+				var msg = "臨時請假";  //回傳訊息字串
+				msg = msg + pname + "/";
+				msg = msg + pleave + "/";
+				msg = msg + pstartdate + "/";
+				msg = msg + penddate + "/";
+				msg = msg + pstarttime + "/";
+				msg = msg + pendtime + "/";
+				msg = msg + Arystartdate[0] + "/";
+				msg = msg + Arystartdate[1] + "/";
+				msg = msg + Arystartdate[2];
+				liff.sendMessages([  //推播訊息
+					{
+						type: "text",
+						text: msg
+					}
+				])
+					.then(() => {
+						liff.closeWindow();  //關閉視窗
+					})
+			}
+			
+		}
+	   window.onload = function () {
+	   <!--document.getElementById("t0").value= document.getElementById("t0").value+"xx"+JSON.stringify(liff);-->
+			liff
+				.init({
+					liffId: "1657228935-j5KEvbzV" // Use own liffId本機測試:1657090452-yZxrKlp2
+				})
+				.then(() => {
+	   <!--document.getElementById("t0").value= document.getElementById("t0").value+"初始化成功";-->
+				　console.log('初始化成功')
+				})
+				.catch((err) => {
+	   <!--document.getElementById("t0").value= document.getElementById("t0").value+"初始化失敗";->
+				　console.log('初始化失敗')
+				});
+			
+			$('#sure').click(function (e) {  //按下確定鈕
+				pushMsg($('#name').val(), $('#leave').val(), $('#startdate').val(), $('#enddate').val(), $('#starttime').val(), $('#endtime').val());
+			});
+			$('#sure_vietnamese').click(function (e) {  //按下確定鈕
+				pushMsg($('#name').val(), $('#leave_vietnamese').val(), $('#startdate').val(), $('#enddate').val(), $('#starttime').val(), $('#endtime').val());
+			});
+		};
+		/*$(document).ready(function () {
+			liff.init(function (data) {  //初始化LIFF
+				initializeApp(data);
+			});
+			
+			$('#sure').click(function (e) {  //按下確定鈕
+				pushMsg($('#name').val(), $('#leave').val(), $('#startdate').val(), $('#enddate').val());
+			});
+		});*/
+	</script>
+</head>
+<body>
+<!--<textarea id="t0"></textarea>-->
+    <div class="row" style="margin: 10px">
+        <div class="col-12" style="margin: 10px">
+	  <label id="language_change">選擇語系</label>
+	  <label id="language_vietnamese">chọn ngôn ngữ</label>
+	  <select id="LanguageSelect" class="form-control">
+	      <option value="Chinese">中文</option>
+                <option value="vietnamese">Tiếng Việt</option>
+	  </select>
+	  <br />
+            <label id="Chinese_num">員工編號</label>
+	  <label id="vietnamese_num">Mã số nhân viên </label>
+            <input type="text" id="name" class="form-control" />
+            <br />
+<!--	  <label id="Chinese_directornum">主管姓名</label>
+	  <label  id="vietnamese_directornum">Tên chủ quản</label>
+            <input type="text" id="Director_name" class="form-control" />
+            <br />-->
+            <label id="Chinese_leave">假別</label>
+	  <label id="vietnamese_leave">Loại ngày phép </label>
+            <select id="leave" class="form-control">
+                <option selected>事假</option>
+                <option>病假</option>
+                <option>特休</option>
+	      <option>公假</option>
+	      <option>無薪假</option>
+	      <option>婚假</option>
+	      <option>公傷假</option>
+	      <option>喪假(父母、養父母、繼父母、配偶喪亡者)</option>
+	      <option>喪假(祖父母、子女、配偶之父母、配偶之養父母或繼父母喪亡者)</option>
+	      <option>喪假(曾祖父母、兄弟姊妹、配偶之祖父母喪亡者)</option>
+	      <option>生理假</option>
+	      <option>陪產假</option>
+	      <option>分娩假</option>
+	      <option>產檢假</option>
+	      <option>防疫病假</option>
+            </select>
+	  <select id="leave_vietnamese" class="form-control">
+                <option value="事假">Nghỉ việc riêng</option>
+                <option value="病假">Phép bệnh </option>
+                <option value="特休">Phép năm</option>
+	      <option value="公假">Nghỉ việc công </option>
+	      <option value="無薪假">Nghỉ không lương</option>
+	      <option value="婚假">Nghỉ kết hôn </option>
+	      <option value="公傷假">Nghỉ thương tật </option>
+	      <option value="喪假(父母、養父母、繼父母、配偶喪亡者)">Nghỉ tang (Bố mẹ, Vợ chồng) </option>
+	      <option value="喪假(祖父母、子女、配偶之父母、配偶之養父母或繼父母喪亡者)">Nghỉ tang ( Ông bà, con cái, bố mẹ vợ chồng) </option>
+	      <option value="喪假(曾祖父母、兄弟姊妹、配偶之祖父母喪亡者)">Nghỉ tang( Ông bà cố, anh chị em)</option>
+	      <option value="生理假">Nghỉ phép sinh lý (MC)</option>
+	      <option value="陪產假">Nghỉ nuôi sinh </option>
+	      <option value="分娩假">Nghỉ thai sản </option>
+	      <option value="產檢假">Nghỉ khám thai </option>
+	      <option value="防疫病假">Nghỉ phòng dịch </option>
+            </select>
+            <br />
+            <label id="Chinese_date">日期</label>
+	  <label id="vietnamese_date">Ngày tháng </label>
+            <input type="date" id="startdate" value="" class="form-control" />
+            <label>~</label>
+            <input type="date" id="enddate" value="" class="form-control" />
+            <br />
+	  <label id="Chinese_time">時間</label>
+	  <label id="vietnamese_time">Thời gian</label>
+            <input type="time" id="starttime" value="" class="form-control" />
+            <label id="test">~</label>
+	  <input type="time" id="endtime" value="" class="form-control" />
+	  <br />
+            <button class="btn btn-success btn-block" id="sure">確定</button>
+	  <button class="btn btn-success btn-block" id="sure_vietnamese">Chắc chắn rồi</button>
+        </div>
+    </div>
+	<!-- 機台選擇變化INPUT欄位顯示 JS-->
+	<script type="text/javascript" src="js/Select_block.js"></script>
+</body>
+</html>

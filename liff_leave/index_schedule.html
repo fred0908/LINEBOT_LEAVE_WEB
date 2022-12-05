@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>特休安排</title>
+    <!--<script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>-->
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Bootstrap core JS-->
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+   <!-- Core theme JS-->
+   <script type="text/javascript" src="js/scripts.js"></script>
+    <script>
+		/*function initializeApp(data) {  //初始化LIFF
+			var userid = data.context.userId;  //取得ID
+		}*/
+		/*function initializeApp() {
+			liff
+				.init({
+					liffId: "1657090452-341RnZzN" // Use own liffId
+				})
+				.then(() => {
+				　console.log('初始化成功')
+				})
+				.catch((err) => {
+				　console.log('初始化失敗')
+				});
+
+			// Using a callback
+			liff.init({ liffId: "1657090452-341RnZzN" }, successCallback, errorCallback);
+		}*/
+		function pushMsg(pname, pleave, pstartdate1, pstartdate2, pstartdate3, pstartdate4, pstartdate5) {
+			var NowDate=new Date();
+			var NowYear=NowDate.getFullYear();
+			var NowMonth=NowDate.getMonth()+1;
+			var NowDay=NowDate.getDate();
+			if (pname == '') {  //資料檢查
+				alert('須填寫員工編號！');
+				return;
+			}else if(startdate1 == ''){
+				alert('須填寫日期！');
+				return;
+			}
+			var msg = "特休安排";  //回傳訊息字串
+			msg = msg + pname + "/";
+			msg = msg + pleave + "/";
+			
+			if(pstartdate5 != ''){
+				var Arystartdate1 = pstartdate1.split('-');
+				var Arystartdate2 = pstartdate2.split('-');
+				var Arystartdate3 = pstartdate3.split('-');
+				var Arystartdate4 = pstartdate4.split('-');
+				var Arystartdate5 = pstartdate5.split('-');	
+				var ConDay1 = Number(Arystartdate1[1]) - NowMonth;
+				var ConDay2 = Number(Arystartdate2[1]) - NowMonth;
+				var ConDay3 = Number(Arystartdate3[1]) - NowMonth;
+				var ConDay4 = Number(Arystartdate4[1]) - NowMonth;
+				var ConDay5 = Number(Arystartdate5[1]) - NowMonth;
+				if(pstartdate5 == pstartdate4 || pstartdate5 == pstartdate3 || pstartdate5 == pstartdate2 || pstartdate5 == pstartdate1){
+					alert('日期不可重複！');
+					return;				
+				}else{
+					msg = msg + pstartdate1 + "/";
+					msg = msg + pstartdate2 + "/";
+					msg = msg + pstartdate3 + "/";
+					msg = msg + pstartdate4 + "/";
+					msg = msg + pstartdate5 + "*";
+					msg = msg + Number(Arystartdate1[0]) + "/";
+					msg = msg + Number(Arystartdate1[1]) + "/";
+					msg = msg + "5";
+				}/*else if(NowYear != Number(Arystartdate5[0]) || NowYear != Number(Arystartdate4[0]) || NowYear != Number(Arystartdate3[0]) || NowYear != Number(Arystartdate2[0]) || NowYear != Number(Arystartdate1[0]) ){
+					alert('年份錯誤,不可跨年安排特休！');
+					return;						
+				}else if(NowMonth > Number(Arystartdate5[1]) || NowMonth > Number(Arystartdate4[1]) || NowMonth > Number(Arystartdate3[1]) || NowMonth > Number(Arystartdate2[1]) || NowMonth > Number(Arystartdate1[1]) ){		
+					alert('月份錯誤,不可小於現在月份安排請假！');
+					return;	
+				}else if(ConDay5 > 1 || ConDay4 > 1 || ConDay3 > 1 || ConDay2 > 1 || ConDay1 > 1){		
+					alert('月份錯誤,已超出可請月份請重新安排請假！');
+					return;	
+				}else{
+					msg = msg + pstartdate1 + "/";
+					msg = msg + pstartdate2 + "/";
+					msg = msg + pstartdate3 + "/";
+					msg = msg + pstartdate4 + "/";
+					msg = msg + pstartdate5 + "*";
+					msg = msg + NowYear + "/";
+					msg = msg + NowMonth + "/";
+					msg = msg + "5";
+					//msg = msg + Arystartdate5[2] + "/";
+					//msg = msg + Arystartdate4[2] + "/";
+					//msg = msg + Arystartdate3[2] + "/";
+					//msg = msg + Arystartdate2[2] + "/";
+					//msg = msg + Arystartdate1[2];
+					
+				}*/
+			}else{
+				if(pstartdate4 != ''){
+					var Arystartdate1 = pstartdate1.split('-');
+					var Arystartdate2 = pstartdate2.split('-');
+					var Arystartdate3 = pstartdate3.split('-');
+					var Arystartdate4 = pstartdate4.split('-');
+					var ConDay1 = Number(Arystartdate1[1]) - NowMonth;
+					var ConDay2 = Number(Arystartdate2[1]) - NowMonth;
+					var ConDay3 = Number(Arystartdate3[1]) - NowMonth;
+					var ConDay4 = Number(Arystartdate4[1]) - NowMonth;					
+					if(pstartdate4 == pstartdate3 || pstartdate4 == pstartdate2 || pstartdate4 == pstartdate1){
+						alert('日期不可重複！');
+						return;				
+					}else{
+						msg = msg + pstartdate1 + "/";
+						msg = msg + pstartdate2 + "/";
+						msg = msg + pstartdate3 + "/";
+						msg = msg + pstartdate4 + "*";
+						msg = msg + Number(Arystartdate1[0]) + "/";
+						msg = msg + Number(Arystartdate1[1]) + "/";
+						msg = msg + "4";
+					}/*else if(NowYear != Number(Arystartdate4[0]) || NowYear != Number(Arystartdate3[0]) || NowYear != Number(Arystartdate2[0]) || NowYear != Number(Arystartdate1[0]) ){
+						alert('年份錯誤,不可跨年安排特休！');
+						return;						
+					}else if(NowMonth > Number(Arystartdate4[1]) || NowMonth > Number(Arystartdate3[1]) || NowMonth > Number(Arystartdate2[1]) || NowMonth > Number(Arystartdate1[1]) ){		
+						alert('月份錯誤,不可小於現在月份安排請假！');
+						return;	
+					}else if(ConDay4 > 1 || ConDay3 > 1 || ConDay2 > 1 || ConDay1 > 1){		
+						alert('月份錯誤,已超出可請月份請重新安排請假！');
+						return;	
+					}else{
+						msg = msg + pstartdate1 + "/";
+						msg = msg + pstartdate2 + "/";
+						msg = msg + pstartdate3 + "/";
+						msg = msg + pstartdate4 + "*";
+						msg = msg + NowYear + "/";
+						msg = msg + NowMonth + "/";
+						msg = msg + "4";
+						//msg = msg + Arystartdate4[2] + "/";
+						//msg = msg + Arystartdate3[2] + "/";
+						//msg = msg + Arystartdate2[2] + "/";
+						//msg = msg + Arystartdate1[2];						
+					}*/
+				}else{
+					if(pstartdate3 != ''){
+						var Arystartdate1 = pstartdate1.split('-');
+						var Arystartdate2 = pstartdate2.split('-');
+						var Arystartdate3 = pstartdate3.split('-');
+						var ConDay1 = Number(Arystartdate1[1]) - NowMonth;
+						var ConDay2 = Number(Arystartdate2[1]) - NowMonth;
+						var ConDay3 = Number(Arystartdate3[1]) - NowMonth;
+						if(pstartdate3 == pstartdate2 || pstartdate3 == pstartdate1){
+							alert('日期不可重複！');
+							return;				
+						}else{
+							msg = msg + pstartdate1 + "/";
+							msg = msg + pstartdate2 + "/";
+							msg = msg + pstartdate3 + "*";
+							msg = msg + Number(Arystartdate1[0]) + "/";
+							msg = msg + Number(Arystartdate1[1]) + "/";
+							msg = msg + "3";
+						}/*else if(NowYear != Number(Arystartdate3[0]) || NowYear != Number(Arystartdate2[0]) || NowYear != Number(Arystartdate1[0]) ){
+							alert('年份錯誤,不可跨年安排特休！');
+							return;						
+						}else if(NowMonth > Number(Arystartdate3[1]) || NowMonth > Number(Arystartdate2[1]) || NowMonth > Number(Arystartdate1[1]) ){		
+							alert('月份錯誤,不可小於現在月份安排請假！');
+							return;	
+						}else if(ConDay3 > 1 || ConDay2 > 1 || ConDay1 > 1){		
+							alert('月份錯誤,已超出可請月份請重新安排請假！');
+							return;	
+						}else{	
+							msg = msg + pstartdate1 + "/";
+							msg = msg + pstartdate2 + "/";
+							msg = msg + pstartdate3 + "*";
+							msg = msg + NowYear + "/";
+							msg = msg + NowMonth + "/";
+							msg = msg + "3";
+							//msg = msg + Arystartdate3[2] + "/";
+							//msg = msg + Arystartdate2[2] + "/";
+							//msg = msg + Arystartdate1[2];
+						}*/
+					}else{
+						if(pstartdate2 != ''){
+							var Arystartdate1 = pstartdate1.split('-');
+							var Arystartdate2 = pstartdate2.split('-');	
+							var ConDay1 = Number(Arystartdate1[1]) - NowMonth;
+							var ConDay2 = Number(Arystartdate2[1]) - NowMonth;
+							
+							if(pstartdate2 == pstartdate1){
+								alert('日期不可重複！');
+								return;				
+							}else{
+								msg = msg + pstartdate1 + "/";
+								msg = msg + pstartdate2 + "*";
+								msg = msg + Number(Arystartdate1[0]) + "/";
+								msg = msg + Number(Arystartdate1[1]) + "/";
+								msg = msg + "2";						
+							}/*else if(NowYear != Number(Arystartdate2[0]) || NowYear != Number(Arystartdate1[0]) ){
+								alert('年份錯誤,不可跨年安排特休！');
+								return;						
+							}else if(NowMonth > Number(Arystartdate2[1]) || NowMonth > Number(Arystartdate1[1]) ){		
+								alert('月份錯誤,不可小於現在月份安排請假！');
+								return;	
+							}else if(ConDay2 > 1 || ConDay1 > 1){		
+								alert('月份錯誤,已超出可請月份請重新安排請假！');
+								return;	
+							}else{	
+								msg = msg + pstartdate1 + "/";
+								msg = msg + pstartdate2 + "*";
+								msg = msg + NowYear + "/";
+								msg = msg + NowMonth + "/";
+								msg = msg + "2";
+								//msg = msg + Arystartdate2[2] + "/";
+								//msg = msg + Arystartdate1[2];
+							}*/
+						}else{
+							var Arystartdate1 = pstartdate1.split('-');
+							var ConDay1 = Number(Arystartdate1[1]) - NowMonth;
+							var ConYear1 = Number(Arystartdate1[0]) - NowYear;
+							msg = msg + pstartdate1 + "*";
+							msg = msg + Number(Arystartdate1[0]) + "/";
+							msg = msg + Number(Arystartdate1[1]) + "/";
+							msg = msg + "1";
+							/*if(ConYear1 > 1 ){
+								alert('年份錯誤,不可跨年安排特休！');
+								return;						
+							}else if(NowMonth > Number(Arystartdate1[1]) && ConYear1 <= 0){		
+								alert('月份錯誤,不可跨月安排特休！');
+								return;	
+							}else if(ConDay1 > 1){		
+								alert('月份錯誤,已超出可請月份請重新安排請假！');
+								return;	
+							}else{
+								msg = msg + pstartdate1 + "*";
+								msg = msg + NowYear + "/";
+								msg = msg + NowMonth + "/";
+								msg = msg + "1";
+								//msg = msg + Arystartdate1[2]								
+							}*/
+			
+						}
+					}
+					
+				}
+				
+			}
+			//document.getElementById("t0").value= document.getElementById("t0").value+msg;
+			
+			
+			liff.sendMessages([  //推播訊息
+				{
+					type: "text",
+					text: msg
+				}
+			])
+				.then(() => {
+					liff.closeWindow();  //關閉視窗
+				})
+		}
+	   window.onload = function () {
+	   //document.getElementById("t0").value= document.getElementById("t0").value+"xx"+JSON.stringify(liff);
+			liff
+				.init({
+					liffId: "1657228935-NKA920Qo" // Use own liffId本機測試:1657090452-341RnZzN
+				})
+				.then(() => {
+	   //document.getElementById("t0").value= document.getElementById("t0").value+"初始化成功";
+				　console.log('初始化成功')
+				})
+				.catch((err) => {
+	   //document.getElementById("t0").value= document.getElementById("t0").value+"初始化失敗";
+				　console.log('初始化失敗')
+				});
+			
+			$('#sure').click(function (e) {  //按下確定鈕
+				pushMsg($('#name').val(), $('#leave').val(), $('#startdate1').val(), $('#startdate2').val(), $('#startdate3').val(), $('#startdate4').val(), $('#startdate5').val());
+			});
+			$('#sure_vietnamese').click(function (e) {  //按下確定鈕
+				pushMsg($('#name').val(), $('#leave_vietnamese').val(), $('#startdate1').val(), $('#startdate2').val(), $('#startdate3').val(), $('#startdate4').val(), $('#startdate5').val());
+			});
+		};
+		/*$(document).ready(function () {
+			liff.init(function (data) {  //初始化LIFF
+				initializeApp(data);
+			});
+			
+			$('#sure').click(function (e) {  //按下確定鈕
+				pushMsg($('#name').val(), $('#leave').val(), $('#startdate').val(), $('#enddate').val());
+			});
+		});*/
+	</script>
+</head>
+<body>
+<!--<textarea id="t0"></textarea>-->
+    <div class="row" style="margin: 10px">
+        <div class="col-12" style="margin: 10px">
+	  <label id="language_change">選擇語系</label>
+	  <label id="language_vietnamese">chọn ngôn ngữ</label>
+	  <select id="LanguageSelect" class="form-control">
+	      <option value="Chinese">中文</option>
+                <option value="vietnamese">Tiếng Việt</option>
+	  </select>
+	  <br />
+            <label id="Chinese_num">員工編號</label>
+	  <label id="vietnamese_num">Mã số nhân viên </label>
+            <input type="text" id="name" class="form-control" />
+            <br />
+<!--	  <label id="Chinese_directornum">主管姓名</label>
+	  <label  id="vietnamese_directornum">Tên chủ quản</label>
+            <input type="text" id="Director_name" class="form-control" />
+            <br />-->
+            <label id="Chinese_leave">假別</label>
+	  <label id="vietnamese_leave">Loại ngày phép </label>
+            <select id="leave" class="form-control">
+                <option selected>特休</option>
+            </select>
+	  <select id="leave_vietnamese" class="form-control">
+                <option value="特休">Phép năm</option>
+            </select>
+            <br />
+            <label id="Chinese_date1">日期1</label>
+	  <label id="vietnamese_date1">Ngày tháng1 </label>
+                <input type="date" id="startdate1" value="" class="form-control" />
+            <br />
+            <label id="Chinese_date2">日期2</label>
+	  <label id="vietnamese_date2">Ngày tháng2 </label>
+                <input type="date" id="startdate2" value="" class="form-control" />
+            <br />
+            <label id="Chinese_date3">日期3</label>
+	  <label id="vietnamese_date3">Ngày tháng3</label>
+                <input type="date" id="startdate3" value="" class="form-control" />
+            <br /> 
+            <label id="Chinese_date4">日期4</label>
+	  <label id="vietnamese_date4">Ngày tháng4</label>
+                <input type="date" id="startdate4" value="" class="form-control" />
+            <br /> 
+            <label id="Chinese_date5">日期5</label>
+	  <label id="vietnamese_date5">Ngày tháng5</label>
+                <input type="date" id="startdate5" value="" class="form-control" />
+            <br /> 
+            <button class="btn btn-success btn-block" id="sure">確定</button>
+	  <button class="btn btn-success btn-block" id="sure_vietnamese">Chắc chắn rồi</button>
+        </div>
+    </div>
+	<!-- 機台選擇變化INPUT欄位顯示 JS-->
+	<script type="text/javascript" src="js/schedule_block.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/*!
+* Start Bootstrap - The Big Picture v5.0.1 (https://startbootstrap.com/template/the-big-picture)
+* Copyright 2013-2021 Start Bootstrap
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-the-big-picture/blob/master/LICENSE)
+*/
+/*!
+ * Bootstrap v5.0.1 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+/*機台選擇變化INPUT欄位顯示預設不顯示*/
+#language_vietnamese {
+  display: none;
+}
+#vietnamese_num {
+  display: none;
+}
+#vietnamese_directornum {
+  display: none;
+}
+#vietnamese_leave {
+  display: none;
+}
+#leave_vietnamese {
+  display:none;
+}
+#vietnamese_date {
+  display: none;
+}
+#vietnamese_time {
+  display: none;
+}
+#sure_vietnamese {
+  display:none;
+}
+#vietnamese_date1 {
+  display:none;
+}
+#vietnamese_date2 {
+  display:none;
+}
+#vietnamese_date3 {
+  display:none;
+}
+#vietnamese_date4 {
+  display:none;
+}
+#vietnamese_date5 {
+  display:none;
+}

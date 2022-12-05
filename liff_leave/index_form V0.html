@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>請假作業</title>
+    <!--<script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>-->
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+	/*function initializeApp(data) {  //初始化LIFF
+		var userid = data.context.userId;  //取得ID
+	}*/
+	function initializeApp() {
+        liff
+            .init({
+                liffId: "1657090452-yZxrKlp2", // Use own liffId
+            })
+            .getProfile()
+            .then((profile) => {
+                const userId = profile.userId;
+            })
+            .catch((err) => {
+                // Error happens during initialization
+                console.log(err.code, err.message);
+            });
+
+        // Using a callback
+        liff.init({ liffId: "1657090452-yZxrKlp2" }, successCallback, errorCallback);
+    }
+	function pushMsg(pname, pleave, pstartdate, penddate) {
+		if (pname == '' || pleave == '' || pstartdate == '' || penddate == '') {  //資料檢查
+			alert('每個項目都必須輸入！');
+			return;
+		}
+		var msg = "###";  //回傳訊息字串
+		msg = msg + pname + "/";
+		msg = msg + pleave + "/";
+		msg = msg + pstartdate + "/";
+		msg = msg + penddate;
+		liff.sendMessages([  //推播訊息
+            {
+                type: "text",
+                text: msg
+            }
+        ])
+            .then(() => {
+				alert("123");
+                liff.closeWindow();  //關閉視窗
+            });
+	}
+	   $(document).ready(function () {
+		liff.init(function () {  //初始化LIFF
+			initializeApp();
+		});
+		
+		$('#sure').click(function (e) {  //按下確定鈕
+			pushMsg($('#name').val(), $('#leave').val(), $('#startdate').val(), $('#enddate').val());
+		});
+	});*/
+	/*$(document).ready(function () {
+		liff.init(function (data) {  //初始化LIFF
+			initializeApp(data);
+		});
+		
+		$('#sure').click(function (e) {  //按下確定鈕
+			pushMsg($('#name').val(), $('#leave').val(), $('#startdate').val(), $('#enddate').val());
+		});
+	});*/
+</script>
+</head>
+<body>
+    <div class="row" style="margin: 10px">
+        <div class="col-12" style="margin: 10px">
+            <label>姓名</label>
+            <input type="text" id="name" class="form-control" />
+            <br />
+            <label>假別</label>
+            <select id="leave" class="form-control">
+                <option selected>事假</option>
+                <option>病假</option>
+                <option>特休</option>
+            </select>
+            <br />
+            <label>日期</label>
+            <input type="date" id="startdate" value="" class="form-control" />
+            <label>~</label>
+            <input type="date" id="enddate" value="" class="form-control" />
+            <br />
+            <button class="btn btn-success btn-block" id="sure">確定</button>
+        </div>
+    </div>
+</body>
+</html>
