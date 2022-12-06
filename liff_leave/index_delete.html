@@ -45,10 +45,30 @@
 				alert('每個項目都必須輸入！');
 				return;
 			}
-			if (Arystartdate[0] > Aryenddate[0]){
+			var msg = "銷假";  //回傳訊息字串
+			msg = msg + pname + "/";
+			msg = msg + pleave + "/";
+			msg = msg + pstartdate + "/";
+			msg = msg + penddate + "/";
+			msg = msg + Arystartdate[0] + "/";
+			msg = msg + Arystartdate[1] + "/";
+			msg = msg + Arystartdate[2] + "/";
+			msg = msg + Aryenddate[0] + "/";
+			msg = msg + Aryenddate[1] + "/";
+			msg = msg + Aryenddate[2];
+			liff.sendMessages([  //推播訊息
+				{
+					type: "text",
+					text: msg
+				}
+			])
+				.then(() => {
+					liff.closeWindow();  //關閉視窗
+				})
+			/*if (Arystartdate[0] > Aryenddate[0]){
 				alert('起始年份不能大於結束年份！');
 				return;				
-			}/*if (Arystartdate[1] > Aryenddate[1]){
+			}if (Arystartdate[1] > Aryenddate[1]){
 				alert('起始月份不能大於結束月份！');
 				return;			
 			}else if (Arystartdate[2] > Aryenddate[2]){
@@ -57,13 +77,13 @@
 			}else if (Arystartdate[2] > Aryenddate[2]){
 				alert('起始日期不能大於結束日期！');
 				return;					
-			}*/if(NowYear != Number(Arystartdate[0]) ){
+			}if(NowYear != Number(Arystartdate[0]) ){
 				alert('年份錯誤,不可跨年安排銷假！');
 				return;						
-			}/*else if(NowMonth > Number(Arystartdate[1]) ){		
+			}else if(NowMonth > Number(Arystartdate[1]) ){		
 				alert('月份錯誤,不可小於現在月份安排銷假！');
 				return;	
-			}*/else if(ConDay > 1 ){		
+			}elseif(ConDay > 1 ){		
 				alert('月份錯誤,已超出可銷月份請重新安排銷假！');
 				return;	
 			}else{			
@@ -87,7 +107,7 @@
 					.then(() => {
 						liff.closeWindow();  //關閉視窗
 					})
-		   }
+		   }*/
 		}
 	   window.onload = function () {
 	   document.getElementById("t0").value= document.getElementById("t0").value+"xx"+JSON.stringify(liff);
