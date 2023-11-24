@@ -45,30 +45,11 @@
 				alert('每個項目都必須輸入！');
 				return;
 			}
-			var msg = "銷假";  //回傳訊息字串
-			msg = msg + pname + "/";
-			msg = msg + pleave + "/";
-			msg = msg + pstartdate + "/";
-			msg = msg + penddate + "/";
-			msg = msg + Arystartdate[0] + "/";
-			msg = msg + Arystartdate[1] + "/";
-			msg = msg + Arystartdate[2] + "/";
-			msg = msg + Aryenddate[0] + "/";
-			msg = msg + Aryenddate[1] + "/";
-			msg = msg + Aryenddate[2];
-			liff.sendMessages([  //推播訊息
-				{
-					type: "text",
-					text: msg
-				}
-			])
-				.then(() => {
-					liff.closeWindow();  //關閉視窗
-				})
-			/*if (Arystartdate[0] > Aryenddate[0]){
+			if (Arystartdate[0] > Aryenddate[0]){
 				alert('起始年份不能大於結束年份！');
 				return;				
-			}if (Arystartdate[1] > Aryenddate[1]){
+			}
+			if (Arystartdate[1] > Aryenddate[1]){
 				alert('起始月份不能大於結束月份！');
 				return;			
 			}else if (Arystartdate[2] > Aryenddate[2]){
@@ -77,13 +58,13 @@
 			}else if (Arystartdate[2] > Aryenddate[2]){
 				alert('起始日期不能大於結束日期！');
 				return;					
-			}if(NowYear != Number(Arystartdate[0]) ){
+			}else if(NowYear != Number(Arystartdate[0]) ){
 				alert('年份錯誤,不可跨年安排銷假！');
 				return;						
 			}else if(NowMonth > Number(Arystartdate[1]) ){		
 				alert('月份錯誤,不可小於現在月份安排銷假！');
 				return;	
-			}elseif(ConDay > 1 ){		
+			}else if(ConDay > 1 ){		
 				alert('月份錯誤,已超出可銷月份請重新安排銷假！');
 				return;	
 			}else{			
@@ -107,7 +88,7 @@
 					.then(() => {
 						liff.closeWindow();  //關閉視窗
 					})
-		   }*/
+		   }
 		}
 	   window.onload = function () {
 	   document.getElementById("t0").value= document.getElementById("t0").value+"xx"+JSON.stringify(liff);
@@ -168,7 +149,8 @@
                 <option>病假</option>
                 <option>特休</option>
 	      <option>公假</option>
-	      <option>無薪假</option>
+	      <!--<option>無薪假</option>-->
+	     <option>家庭照護假</option>
 	      <option>婚假</option>
 	      <option>公傷假</option>
 	      <option>喪假(父母、養父母、繼父母、配偶喪亡者)</option>
@@ -178,14 +160,14 @@
 	      <option>陪產假</option>
 	      <option>分娩假</option>
 	      <option>產檢假</option>
-	      <!--<option>防疫病假</option>-->
+	      <option>防疫病假</option>
             </select>
 	  <select id="leave_vietnamese" class="form-control">
                 <option value="事假">Nghỉ việc riêng</option>
                 <option value="病假">Phép bệnh </option>
                 <option value="特休">Phép năm</option>
 	      <option value="公假">Nghỉ việc công </option>
-	      <option value="無薪假">Nghỉ không lương</option>
+	      <!--<option value="無薪假">Nghỉ không lương</option>-->
 	      <option value="婚假">Nghỉ kết hôn </option>
 	      <option value="公傷假">Nghỉ thương tật </option>
 	      <option value="喪假(父母、養父母、繼父母、配偶喪亡者)">Nghỉ tang (Bố mẹ, Vợ chồng) </option>
@@ -195,7 +177,7 @@
 	      <option value="陪產假">Nghỉ nuôi sinh </option>
 	      <option value="分娩假">Nghỉ thai sản </option>
 	      <option value="產檢假">Nghỉ khám thai </option>
-<!--<option value="防疫病假">Nghỉ phòng dịch </option>-->
+	      <option value="防疫病假">Nghỉ phòng dịch </option>
             </select>
             <br />
             <label id="Chinese_date">日期</label>

@@ -49,7 +49,7 @@
 			var msg = "特休安排";  //回傳訊息字串
 			msg = msg + pname + "/";
 			msg = msg + pleave + "/";
-			
+
 			if(pstartdate5 != ''){
 				var Arystartdate1 = pstartdate1.split('-');
 				var Arystartdate2 = pstartdate2.split('-');
@@ -64,16 +64,7 @@
 				if(pstartdate5 == pstartdate4 || pstartdate5 == pstartdate3 || pstartdate5 == pstartdate2 || pstartdate5 == pstartdate1){
 					alert('日期不可重複！');
 					return;				
-				}else{
-					msg = msg + pstartdate1 + "/";
-					msg = msg + pstartdate2 + "/";
-					msg = msg + pstartdate3 + "/";
-					msg = msg + pstartdate4 + "/";
-					msg = msg + pstartdate5 + "*";
-					msg = msg + Number(Arystartdate1[0]) + "/";
-					msg = msg + Number(Arystartdate1[1]) + "/";
-					msg = msg + "5";
-				}/*else if(NowYear != Number(Arystartdate5[0]) || NowYear != Number(Arystartdate4[0]) || NowYear != Number(Arystartdate3[0]) || NowYear != Number(Arystartdate2[0]) || NowYear != Number(Arystartdate1[0]) ){
+				}else if(NowYear != Number(Arystartdate5[0]) || NowYear != Number(Arystartdate4[0]) || NowYear != Number(Arystartdate3[0]) || NowYear != Number(Arystartdate2[0]) || NowYear != Number(Arystartdate1[0]) ){
 					alert('年份錯誤,不可跨年安排特休！');
 					return;						
 				}else if(NowMonth > Number(Arystartdate5[1]) || NowMonth > Number(Arystartdate4[1]) || NowMonth > Number(Arystartdate3[1]) || NowMonth > Number(Arystartdate2[1]) || NowMonth > Number(Arystartdate1[1]) ){		
@@ -91,13 +82,13 @@
 					msg = msg + NowYear + "/";
 					msg = msg + NowMonth + "/";
 					msg = msg + "5";
-					//msg = msg + Arystartdate5[2] + "/";
-					//msg = msg + Arystartdate4[2] + "/";
-					//msg = msg + Arystartdate3[2] + "/";
-					//msg = msg + Arystartdate2[2] + "/";
-					//msg = msg + Arystartdate1[2];
+					/*msg = msg + Arystartdate5[2] + "/";
+					msg = msg + Arystartdate4[2] + "/";
+					msg = msg + Arystartdate3[2] + "/";
+					msg = msg + Arystartdate2[2] + "/";
+					msg = msg + Arystartdate1[2];*/
 					
-				}*/
+				}
 			}else{
 				if(pstartdate4 != ''){
 					var Arystartdate1 = pstartdate1.split('-');
@@ -111,15 +102,7 @@
 					if(pstartdate4 == pstartdate3 || pstartdate4 == pstartdate2 || pstartdate4 == pstartdate1){
 						alert('日期不可重複！');
 						return;				
-					}else{
-						msg = msg + pstartdate1 + "/";
-						msg = msg + pstartdate2 + "/";
-						msg = msg + pstartdate3 + "/";
-						msg = msg + pstartdate4 + "*";
-						msg = msg + Number(Arystartdate1[0]) + "/";
-						msg = msg + Number(Arystartdate1[1]) + "/";
-						msg = msg + "4";
-					}/*else if(NowYear != Number(Arystartdate4[0]) || NowYear != Number(Arystartdate3[0]) || NowYear != Number(Arystartdate2[0]) || NowYear != Number(Arystartdate1[0]) ){
+					}else if(NowYear != Number(Arystartdate4[0]) || NowYear != Number(Arystartdate3[0]) || NowYear != Number(Arystartdate2[0]) || NowYear != Number(Arystartdate1[0]) ){
 						alert('年份錯誤,不可跨年安排特休！');
 						return;						
 					}else if(NowMonth > Number(Arystartdate4[1]) || NowMonth > Number(Arystartdate3[1]) || NowMonth > Number(Arystartdate2[1]) || NowMonth > Number(Arystartdate1[1]) ){		
@@ -136,11 +119,11 @@
 						msg = msg + NowYear + "/";
 						msg = msg + NowMonth + "/";
 						msg = msg + "4";
-						//msg = msg + Arystartdate4[2] + "/";
-						//msg = msg + Arystartdate3[2] + "/";
-						//msg = msg + Arystartdate2[2] + "/";
-						//msg = msg + Arystartdate1[2];						
-					}*/
+						/*msg = msg + Arystartdate4[2] + "/";
+						msg = msg + Arystartdate3[2] + "/";
+						msg = msg + Arystartdate2[2] + "/";
+						msg = msg + Arystartdate1[2];*/						
+					}
 				}else{
 					if(pstartdate3 != ''){
 						var Arystartdate1 = pstartdate1.split('-');
@@ -152,14 +135,7 @@
 						if(pstartdate3 == pstartdate2 || pstartdate3 == pstartdate1){
 							alert('日期不可重複！');
 							return;				
-						}else{
-							msg = msg + pstartdate1 + "/";
-							msg = msg + pstartdate2 + "/";
-							msg = msg + pstartdate3 + "*";
-							msg = msg + Number(Arystartdate1[0]) + "/";
-							msg = msg + Number(Arystartdate1[1]) + "/";
-							msg = msg + "3";
-						}/*else if(NowYear != Number(Arystartdate3[0]) || NowYear != Number(Arystartdate2[0]) || NowYear != Number(Arystartdate1[0]) ){
+						}else if(NowYear != Number(Arystartdate3[0]) || NowYear != Number(Arystartdate2[0]) || NowYear != Number(Arystartdate1[0]) ){
 							alert('年份錯誤,不可跨年安排特休！');
 							return;						
 						}else if(NowMonth > Number(Arystartdate3[1]) || NowMonth > Number(Arystartdate2[1]) || NowMonth > Number(Arystartdate1[1]) ){		
@@ -175,27 +151,20 @@
 							msg = msg + NowYear + "/";
 							msg = msg + NowMonth + "/";
 							msg = msg + "3";
-							//msg = msg + Arystartdate3[2] + "/";
-							//msg = msg + Arystartdate2[2] + "/";
-							//msg = msg + Arystartdate1[2];
-						}*/
+							/*msg = msg + Arystartdate3[2] + "/";
+							msg = msg + Arystartdate2[2] + "/";
+							msg = msg + Arystartdate1[2];*/
+						}
 					}else{
 						if(pstartdate2 != ''){
 							var Arystartdate1 = pstartdate1.split('-');
 							var Arystartdate2 = pstartdate2.split('-');	
 							var ConDay1 = Number(Arystartdate1[1]) - NowMonth;
-							var ConDay2 = Number(Arystartdate2[1]) - NowMonth;
-							
+							var ConDay2 = Number(Arystartdate2[1]) - NowMonth;							
 							if(pstartdate2 == pstartdate1){
 								alert('日期不可重複！');
 								return;				
-							}else{
-								msg = msg + pstartdate1 + "/";
-								msg = msg + pstartdate2 + "*";
-								msg = msg + Number(Arystartdate1[0]) + "/";
-								msg = msg + Number(Arystartdate1[1]) + "/";
-								msg = msg + "2";						
-							}/*else if(NowYear != Number(Arystartdate2[0]) || NowYear != Number(Arystartdate1[0]) ){
+							}else if(NowYear != Number(Arystartdate2[0]) || NowYear != Number(Arystartdate1[0]) ){
 								alert('年份錯誤,不可跨年安排特休！');
 								return;						
 							}else if(NowMonth > Number(Arystartdate2[1]) || NowMonth > Number(Arystartdate1[1]) ){		
@@ -210,22 +179,20 @@
 								msg = msg + NowYear + "/";
 								msg = msg + NowMonth + "/";
 								msg = msg + "2";
-								//msg = msg + Arystartdate2[2] + "/";
-								//msg = msg + Arystartdate1[2];
-							}*/
+								/*msg = msg + Arystartdate2[2] + "/";
+								msg = msg + Arystartdate1[2];*/
+							}
 						}else{
 							var Arystartdate1 = pstartdate1.split('-');
 							var ConDay1 = Number(Arystartdate1[1]) - NowMonth;
-							var ConYear1 = Number(Arystartdate1[0]) - NowYear;
-							msg = msg + pstartdate1 + "*";
-							msg = msg + Number(Arystartdate1[0]) + "/";
-							msg = msg + Number(Arystartdate1[1]) + "/";
-							msg = msg + "1";
-							/*if(ConYear1 > 1 ){
+							if(NowYear != Number(Arystartdate1[0]) ){
 								alert('年份錯誤,不可跨年安排特休！');
 								return;						
-							}else if(NowMonth > Number(Arystartdate1[1]) && ConYear1 <= 0){		
+							}else if(NowMonth > Number(Arystartdate1[1]) ){		
 								alert('月份錯誤,不可跨月安排特休！');
+								return;	
+							}else if(NowMonth > Number(Arystartdate1[1]) ){		
+								alert('月份錯誤,不可小於現在月份安排請假！');
 								return;	
 							}else if(ConDay1 > 1){		
 								alert('月份錯誤,已超出可請月份請重新安排請假！');
@@ -236,7 +203,7 @@
 								msg = msg + NowMonth + "/";
 								msg = msg + "1";
 								//msg = msg + Arystartdate1[2]								
-							}*/
+							}
 			
 						}
 					}
@@ -244,7 +211,7 @@
 				}
 				
 			}
-			//document.getElementById("t0").value= document.getElementById("t0").value+msg;
+			document.getElementById("t0").value= document.getElementById("t0").value+msg;
 			
 			
 			liff.sendMessages([  //推播訊息
@@ -258,17 +225,17 @@
 				})
 		}
 	   window.onload = function () {
-	   //document.getElementById("t0").value= document.getElementById("t0").value+"xx"+JSON.stringify(liff);
+	   document.getElementById("t0").value= document.getElementById("t0").value+"xx"+JSON.stringify(liff);
 			liff
 				.init({
 					liffId: "1657228935-NKA920Qo" // Use own liffId本機測試:1657090452-341RnZzN
 				})
 				.then(() => {
-	   //document.getElementById("t0").value= document.getElementById("t0").value+"初始化成功";
+	   document.getElementById("t0").value= document.getElementById("t0").value+"初始化成功";
 				　console.log('初始化成功')
 				})
 				.catch((err) => {
-	   //document.getElementById("t0").value= document.getElementById("t0").value+"初始化失敗";
+	   document.getElementById("t0").value= document.getElementById("t0").value+"初始化失敗";
 				　console.log('初始化失敗')
 				});
 			
@@ -291,7 +258,7 @@
 	</script>
 </head>
 <body>
-<!--<textarea id="t0"></textarea>-->
+<textarea id="t0"></textarea>
     <div class="row" style="margin: 10px">
         <div class="col-12" style="margin: 10px">
 	  <label id="language_change">選擇語系</label>
