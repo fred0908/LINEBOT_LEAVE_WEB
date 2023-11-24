@@ -106,10 +106,10 @@ leaveA.addEventListener('change', (e) => {
 	  break;
 	}
 	case '陪產假': {
-		starttime1.style.display = 'none';
-		test1.style.display = 'none';
-		endtime1.style.display = 'none';
-		Chinese_timeA.style.display = 'none';
+		starttime1.style.display = 'block';
+		test1.style.display = 'block';
+		endtime1.style.display = 'block';
+		Chinese_timeA.style.display = 'block';
 	  break;
 	}
 	case '分娩假': {
@@ -173,10 +173,10 @@ leave_vietnameseB.addEventListener('change', (e) => {
 	  break;
 	}
 	case '陪產假': {
-		starttime1.style.display = 'none';
-		test1.style.display = 'none';
-		endtime1.style.display = 'none';
-		vietnamese_timeB.style.display = 'none';
+		starttime1.style.display = 'block';
+		test1.style.display = 'block';
+		endtime1.style.display = 'block';
+		vietnamese_timeB.style.display = 'block';
 	  break;
 	}
 	case '分娩假': {
